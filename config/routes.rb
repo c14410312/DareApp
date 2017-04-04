@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
  
-  devise_for :users
-    root 'static_pages#home'
+  get 'welcome/index'
+
+  devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
   	get  '/help',    to: 'static_pages#help', as: 'help'
   	get  '/about', to: 'static_pages#about', as: 'about'
   	get '/contact', to: 'static_pages#contact', as: 'contact'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 	
+ 	#root to welcome home if logged in
+ 	authenticated :user do
+    	root 'welcome#index', as: :authenticated_root
+  	end
+ 	root 'static_pages#home' #root to static home if not logged in
 end
