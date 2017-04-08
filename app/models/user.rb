@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :omniauthable
 
   has_many :identities
+  has_many :votes
+  has_many :userdares
+  has_many :comments
 
   def facebook
     identities.where( :provider => "facebook" ).first

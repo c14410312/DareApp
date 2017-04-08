@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Userdares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @userdares.each do |userdare| %>
+      <tr>
+        <td><%= userdare.name %></td>
+        <td><%= userdare.user_id %></td>
+        <td><%= link_to 'Show', userdare %></td>
+        <td><%= link_to 'Edit', edit_userdare_path(userdare) %></td>
+        <td><%= link_to 'Destroy', userdare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Userdare', new_userdare_path %>

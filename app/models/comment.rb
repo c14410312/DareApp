@@ -1,4 +1,4 @@
-class Vote < ApplicationRecord
+class Comment < ApplicationRecord
 	belongs_to :user
 	belongs_to :userdare 
 end

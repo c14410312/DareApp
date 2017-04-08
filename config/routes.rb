@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
  
+  get 'topusers/index'
+
+  get 'topdares/index'
+
+  resources :votes
+  resources :userdares
+  resources :comments
   get 'welcome/index'
 
   devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }

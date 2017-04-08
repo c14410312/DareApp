@@ -2,10 +2,10 @@
 
 one:
   user_id: 1
-  userdare_id: 
+  userdare_id: 1
   vote_up_or_down: 1
 
 two:
   user_id: 1
-  userdare_id: 
+  userdare_id: 1
   vote_up_or_down: 1
