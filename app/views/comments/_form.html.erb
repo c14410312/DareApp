@@ -14,16 +14,9 @@
   <div class="field">
     <%= f.label :text %>
     <%= f.text_field :text %>
-  </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :userdare_id %>
-    <%= f.number_field :userdare_id %>
+    <%= f.hidden_field :user_id, :value => 1 %>
+    <%= f.hidden_field :userdare_id, :value => params[:id] %>
   </div>
 
   <div class="actions">

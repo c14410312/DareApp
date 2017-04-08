@@ -10,6 +10,7 @@ class UserdaresController < ApplicationController
   # GET /userdares/1
   # GET /userdares/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /userdares/new

@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<p style="border: 1px solid #345; font-size: 20px; padding:15px; border-radius: 10px; background-color: rgba(42, 55, 70, 0.35)">
   <%= @userdare.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @userdare.user_id %>
+  <%= @userdare.user.email %> | <%= link_to 'Edit', edit_userdare_path(@userdare) %> 
 </p>
 
-<%= link_to 'Edit', edit_userdare_path(@userdare) %> |
-<%= link_to 'Back', userdares_path %>
+<p>
+  <%= render '/comments/form', comment: @comment %>
+</p>
+
