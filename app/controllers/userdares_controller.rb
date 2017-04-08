@@ -27,7 +27,7 @@ class UserdaresController < ApplicationController
   # POST /userdares.json
   def create
     @userdare = Userdare.new(userdare_params)
-
+    
     respond_to do |format|
       if @userdare.save
         format.html { redirect_to action: "index", notice: 'Userdare was successfully created.' }
