@@ -1,0 +1,2 @@
+$("#comment_list").html("<%= escape_javascript(render partial: 'userdares/comment_list', locals: { comments: @comments } ) %>"); 
+$("#new_comment").find("input[type=text], textarea").val("");

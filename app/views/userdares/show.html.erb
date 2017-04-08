@@ -8,6 +8,10 @@
   <%= @userdare.user.email %> | <%= link_to 'Edit', edit_userdare_path(@userdare) %> 
 </p>
 
+<div id="comment_list" >
+  <%= render partial: 'comment_list', locals: {comments: @comments}  %>
+</div>
+
 <p>
   <%= render '/comments/form', comment: @comment %>
 </p>

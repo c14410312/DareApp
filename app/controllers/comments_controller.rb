@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
+  def list
+    @comments = Comment.where(userdare_id: params[:id])
+  end
+
   # GET /comments/1
   # GET /comments/1.json
   def show
@@ -25,11 +29,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
+    @comments = @comment.userdare.comments
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        # format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        # format.json { render :show, status: :created, location: @comment }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

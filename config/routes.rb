@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :votes
   resources :userdares
   resources :comments
+  get '/comments/list/:id' => 'comments#list'
+  
   get 'welcome/index'
 
   devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
