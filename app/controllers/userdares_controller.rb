@@ -28,7 +28,7 @@ class UserdaresController < ApplicationController
 
     respond_to do |format|
       if @userdare.save
-        format.html { redirect_to @userdare, notice: 'Userdare was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Userdare was successfully created.' }
         format.json { render :show, status: :created, location: @userdare }
       else
         format.html { render :new }
