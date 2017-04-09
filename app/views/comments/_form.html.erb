@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :text %>
-    <%= f.text_field :text %>
+    <%= f.label :text, 'New comment' %>
+    <%= f.text_field :text, :class => "form-control input-lg" %>
 
     <%= f.hidden_field :user_id, :value => 1 %>
     <%= f.hidden_field :userdare_id, :value => params[:id] %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "form-control btn-primary" %>
   </div>
 <% end %>
