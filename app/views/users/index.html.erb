@@ -1,0 +1,6 @@
+
+
+	<% @users = User.all %>
+	<% @users.each do |user| %>
+	  <%= render 'shared/user_info' %>
+	<% end %>

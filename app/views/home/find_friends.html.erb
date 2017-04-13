@@ -1,0 +1,11 @@
+<div class="row">
+  
+  <div class="col-lg-6 well">
+    <h3>Find Friends</h3>
+    <hr>
+    <div id="users">
+    	<%= render(@users) %>
+	  </div>
+    <%= render 'shared/paginate', resources: @users %>
+   </div>
+</div>
