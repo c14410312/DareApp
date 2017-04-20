@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate'
 
+gem 'carrierwave-video'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

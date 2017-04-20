@@ -1,0 +1,14 @@
+<% if current_user.id == (@userdare.sent_from_id) %>
+	<%= render 'darer' %>
+<% else %>
+	<% if !@userdare.isSelected %>
+		<%= render 'daree' %>
+	<% else %>
+		<% if !@userdare.accepted %>
+			<%= render 'declined' %>
+		<% else %>
+			<%= render 'accepted' %>
+		<% end %>
+	<% end %> <!--end isSelected an option view -->
+<% end %> <!--end current_user or not -->
+

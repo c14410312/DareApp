@@ -1,0 +1,7 @@
+<%= render 'dare_details' %>
+<div id="selected">
+	<div class="btn-group btn-group-justified">
+	  	<%= link_to "Accept", set_to_accepted_path(:id => @userdare.id) , class: 'btn btn-success' %>
+	  	<%= link_to "decline", set_to_declined_path(:id => @userdare.id) , class: 'btn btn-danger' %>
+	</div>
+</div>

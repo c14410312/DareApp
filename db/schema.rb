@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410165232) do
+ActiveRecord::Schema.define(version: 20170419143443) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "text"
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(version: 20170410165232) do
     t.integer  "userdare_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "dare_rooms", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "sent_to_id"
+    t.integer  "sent_from_id"
+    t.boolean  "accepted"
+    t.boolean  "isSelected"
+    t.string   "proof"
+    t.index ["sent_from_id"], name: "index_dare_rooms_on_sent_from_id"
+    t.index ["sent_to_id"], name: "index_dare_rooms_on_sent_to_id"
+    t.index ["user_id"], name: "index_dare_rooms_on_user_id"
   end
 
   create_table "identities", force: :cascade do |t|

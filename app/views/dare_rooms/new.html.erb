@@ -1,0 +1,10 @@
+<h1>Add a dare</h1>
+
+<%= form_for @dare_room do |f| %>
+	<div class="form-group">
+		<%= f.label :title, "Dare name" %>
+		<%= f.text_field :title, autofocus: true, class: 'form-control' %>
+		<%= f.select :sent_to_id, options_for_select(User.all.map {|c| [c.email, c.id]}), { :include_blank => "Please select a user"}, {:class => "form-control"} %>
+	</div>
+	<%= f.submit "Add!", class: 'btn btn-primary' %>
+<% end %>

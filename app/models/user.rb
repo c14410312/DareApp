@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :userdares
   has_many :comments
+  has_many :dare_rooms, dependent: :destroy
 
   validates_processing_of :avatar
   validate :image_size_validation
