@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/set_to_private" => 'dare_rooms#set_to_private', as: 'set_to_private'
   
 
-  devise_for :users, class_name: 'FormUser', :path_prefix => 'd', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
+  devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
   resources :users, :only =>[:show]	
   get  '/help',    to: 'static_pages#help', as: 'help'
 	get  '/about', to: 'static_pages#about', as: 'about'
