@@ -35,15 +35,28 @@ gem 'devise'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'omniauth-facebook'
 gem 'carrierwave'
+gem 'carrierwave-ffmpeg'
 gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate'
 
 gem 'carrierwave-video'
+
+gem 'jquery-sliders-rails'
+
+gem 'simple_form'
+gem 'paperclip'
+gem 'sidekiq'
+gem 'sidetiq', github: 'sfroehler/sidetiq', branch: 'celluloid-0-17-compatibility'
+gem 'sinatra', github: 'sinatra'
+gem 'redis-rails'
+#gem 'rack-protection', github: 'sinatra/rack-protection', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass', '3.3.6'
+
+gem 'pg'
 
 group :development, :test do
   gem 'sqlite3'

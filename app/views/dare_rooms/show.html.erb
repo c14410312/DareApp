@@ -1,3 +1,4 @@
+<%= render 'shared/notice' %>
 <% if current_user.id == (@userdare.sent_from_id) %>
 	<%= render 'darer' %>
 <% else %>
@@ -7,7 +8,17 @@
 		<% if !@userdare.accepted %>
 			<%= render 'declined' %>
 		<% else %>
-			<%= render 'accepted' %>
+			<!-- if the user has uploaded proof -->
+			<% if (@userdare.proof.blank?) %>
+				<%= render 'accepted' %>
+			<% else %>
+				<!-- if the user proof has not been approved -->
+				<% if (@userdare.proof_approved.blank?) %>
+					<%= render 'proof' %> 
+				<% else %>
+					<%= render 'proof_approved' %>
+				<% end %>
+			<% end %>
 		<% end %>
 	<% end %> <!--end isSelected an option view -->
 <% end %> <!--end current_user or not -->

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419143443) do
+ActiveRecord::Schema.define(version: 20170501122245) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "text"
@@ -23,13 +23,16 @@ ActiveRecord::Schema.define(version: 20170419143443) do
   create_table "dare_rooms", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "sent_to_id"
     t.integer  "sent_from_id"
     t.boolean  "accepted"
     t.boolean  "isSelected"
     t.string   "proof"
+    t.boolean  "proof_approved"
+    t.boolean  "publish_proof"
+    t.integer  "coins"
     t.index ["sent_from_id"], name: "index_dare_rooms_on_sent_from_id"
     t.index ["sent_to_id"], name: "index_dare_rooms_on_sent_to_id"
     t.index ["user_id"], name: "index_dare_rooms_on_user_id"
@@ -60,21 +63,51 @@ ActiveRecord::Schema.define(version: 20170419143443) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",  null: false
+    t.string   "encrypted_password",     default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "avatar"
+    t.integer  "coins",                  default: 100
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "video_file_file_name"
+    t.string   "video_file_content_type"
+    t.integer  "video_file_file_size"
+    t.datetime "video_file_updated_at"
+    t.string   "mp4_file_file_name"
+    t.string   "mp4_file_content_type"
+    t.integer  "mp4_file_file_size"
+    t.datetime "mp4_file_updated_at"
+    t.string   "webm_file_file_name"
+    t.string   "webm_file_content_type"
+    t.integer  "webm_file_file_size"
+    t.datetime "webm_file_updated_at"
+    t.string   "ogg_file_file_name"
+    t.string   "ogg_file_content_type"
+    t.integer  "ogg_file_file_size"
+    t.datetime "ogg_file_updated_at"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.boolean  "published"
+    t.integer  "dareroom_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["dareroom_id"], name: "index_videos_on_dareroom_id"
   end
 
   create_table "votes", force: :cascade do |t|

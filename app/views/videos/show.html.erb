@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row video-full" data-video-id="<%= @video.id %>">
+    <div class="col-md-10">
+      <h1>
+        <%= @video.name %>
+      </h1>
+      <p class="small">
+        <%= link_to 'Back to videos' ,videos_path %>
+      </p>
+      <% if @video.all_formats_encoded? %>
+        <video class="video-js" data-setup="{ %>" height="264" id="my-video" preload="auto" width="640">
+          <source src="<%= @video.mp4_file.url %>" type="video/mp4"></source>
+          <source src="<%= @video.webm_file.url %>" type="video/webm"></source>
+          <source src="<%= @video.ogg_file.url %>" type="video/ogg"></source>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+        </video>
+      <% else %>
+        <p>Video is still being encoded.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,13 @@
 	<div class="form-group">
 		<%= f.label :title, "Dare name" %>
 		<%= f.text_field :title, autofocus: true, class: 'form-control' %>
-		<%= f.select :sent_to_id, options_for_select(User.all.map {|c| [c.email, c.id]}), { :include_blank => "Please select a user"}, {:class => "form-control"} %>
+		<%= f.select :sent_to_id, options_for_select(User.all.where('id NOT IN (?)', current_user.id).map {|c| [c.email, c.id]}), { :include_blank => "Please select a user"}, {:class => "form-control"} %>
+		<div class="field">
+			<%= f.label :coins, "Coins" %><br/>
+			<div id="slider"></div><br/>
+			<%= f.text_field :coins %>
+		</div>
 	</div>
-	<%= f.submit "Add!", class: 'btn btn-primary' %>
+	<%= f.submit "Add!", class: 'btn btn-primary btn-md' %>
 <% end %>
+

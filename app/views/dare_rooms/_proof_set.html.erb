@@ -1,0 +1,27 @@
+<%= render 'show_proof' %>
+
+<%= link_to "Verify Proof", "#myModal", :class => "btn btn-warning btn-lg", "data-toggle" => "modal" %>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Verify Proof</h4>
+      </div>
+      <div class="modal-body">
+      	<h5>Is Proof Acceptable?</h5>
+      	<div class="btn-group btn-group-justified">
+	  		<%= link_to "Yes", set_to_approved_path(:id => @userdare.id) , class: 'btn btn-success' %>
+	  		<%= link_to "No", set_to_unapproved_path(:id => @userdare.id) , class: 'btn btn-danger' %>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

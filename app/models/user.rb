@@ -15,6 +15,16 @@ class User < ApplicationRecord
 
   validates_processing_of :avatar
   validate :image_size_validation
+
+  def deduct_coins(value)
+    self.coins = self.coins - value
+    self.save
+  end
+
+  def lodge_coins(value)
+    self.coins = self.coins + value
+    self.save
+  end
  
   private
     def image_size_validation

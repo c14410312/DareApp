@@ -8,4 +8,9 @@ module ApplicationHelper
 			page_title + " | " + base_title
 		end
 	end
+
+	def link_to_micro_image(image_path, target_link, options={})
+		link_to(image_tag(image_path, class: 'img micro-img'), target_link, options)
+	end
+
 end

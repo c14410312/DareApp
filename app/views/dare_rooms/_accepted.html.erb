@@ -1,8 +1,39 @@
 <%= render 'dare_details' %>
 <h3> Dare Accepted </h3>
 <h3> Prove it </h3>
-<%= link_to "Get Proof", '#', class: 'btn btn-primary' %>
+<!-- Trigger the modal with a button -->
+<%= link_to "Upload Proof", "#myModal", :class => "btn btn-primary btn-lg", "data-toggle" => "modal" %>
+
+<!--<%= link_to "New Proof", new_video_path(:dareroom_id => @userdare.id), :class => "btn btn-primary btn-lg"%> -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload a video</h4>
+      </div>
+      <div class="modal-body">
+      <%= simple_form_for @userdare do |f| %>
+	      <div class="field">
+		    <%= f.input :proof %>
+		  </div>
+		  <%= f.button :submit, class: 'btn btn-primary btn-sm', value: 'Upload Proof' %>
+	  <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <h3> Chicken Out </h3>
 <%= link_to "Chicken Out", '#', class: 'btn btn-warning' %>
 
-<%= link_to "Go Back", '#', class: 'btn btn-primary' %>
+
+
+	

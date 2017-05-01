@@ -4,3 +4,13 @@
 <h2>
 	<%= @userdare.title %>
 </h2>
+
+<%if (@userdare.proof.url.blank?) %>
+	<%= render 'proof_pending' %>
+<% else %>
+	<% if (@userdare.proof_approved.blank?) %>
+		<%= render 'proof_set' %>
+	<% else %>
+		<h3>Dare Completed</h3>
+	<% end %>
+<% end %>

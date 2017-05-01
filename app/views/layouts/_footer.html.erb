@@ -1,9 +1,21 @@
-<footer class="footer">
-  <div data-role="navbar">
-      <ul>
-        <li><a href="#" data-icon="home">Home</a></li>
-        <li><a href="#" data-icon="arrow-r">Page Two</a></li>
-        <li><a href="#" data-icon="search">Search</a></li>
-      </ul>
-    </div>
-</footer>
+<% if user_signed_in? %>
+<div id="footer">
+  <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+  <div class="row" id="bottomNav">
+   <%= link_to dare_rooms_path, class: 'col-xs-3 text-center' do %>
+			<i class="glyphicon glyphicon-user"></i>
+			<br>Dares
+	<% end %>
+    <%= link_to root_path, class: 'col-xs-3 text-center' do %>
+			<i class="glyphicon glyphicon-user"></i>
+			<br>Feed
+	<% end %>
+    <div class="col-xs-3 text-center"><a href="#"><i class="glyphicon glyphicon-user"></i><br>Champs</a></div>
+    <%= link_to user_path(current_user.id), class: 'col-xs-3 text-center' do %>
+			<i class="glyphicon glyphicon-user"></i>
+			<br>Profile
+	<% end %>
+  </div>
+  </div>
+</div>
+<% end %>

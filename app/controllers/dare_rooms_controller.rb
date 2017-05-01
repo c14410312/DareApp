@@ -15,6 +15,7 @@ class DareRoomsController < ApplicationController
 	def create
 		@dare_room = current_user.dare_rooms.build(dare_room_params)
 		@dare_room.sent_from_id = current_user.id
+		current_user.deduct_coins(@dare_room.coins) #call deduct coins function
 
 		if @dare_room.save
 			flash[:success] = "Dare room added"
@@ -23,6 +24,14 @@ class DareRoomsController < ApplicationController
 			render 'new'
 		end
 	end
+
+	def update
+      if @userdare.update_attributes(dare_room_params)
+        redirect_to @userdare, notice: 'Proof uploaded successfully'
+      else
+        redirect_to @userdare, notice: 'Proof upload unsuccessful'
+      end
+  	end
 
 	def show
 		@userdare = DareRoom.find(params[:id])
@@ -43,6 +52,32 @@ class DareRoomsController < ApplicationController
 		redirect_to @userdare
 	end
 
+	def set_to_approved
+		@userdare = DareRoom.find(params[:id])
+		@user = User.find(@userdare.sent_to_id)
+		@userdare.approve_proof!
+		@user.lodge_coins(@userdare.coins) #adds the coins to the user when dare approved
+		redirect_to @userdare
+	end
+
+	def set_to_unapproved
+		@userdare = DareRoom.find(params[:id])
+		@userdare.unapprove_proof!
+		redirect_to @userdare
+	end
+
+	def set_to_public
+		@userdare = DareRoom.find(params[:id])
+		@userdare.public_proof!
+		redirect_to @userdare
+	end
+
+	def set_to_private
+		@userdare = DareRoom.find(params[:id])
+		@userdare.private_proof!
+		redirect_to @userdare
+	end
+
 	private
 
 	def set_userdare
@@ -50,6 +85,6 @@ class DareRoomsController < ApplicationController
     end
 
 	def dare_room_params
-		params.require(:dare_room).permit(:title, :sent_to_id)
+		params.require(:dare_room).permit(:title, :sent_to_id, :sent_from_id, :proof, :coins)
 	end
 end

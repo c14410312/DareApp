@@ -1,0 +1,9 @@
+<%= simple_form_for @video, html: { :multipart => true} do |f| %>
+	<div class="field">
+		<%= f.input :video_file, as: :file %>
+	</div>
+	<div class="field">
+		<%= f.hidden_field :dareroom_id %>
+	</div>
+	<%= f.button :submit, class: 'btn btn-primary btn-sm', value: 'Upload Proof' %>
+<% end %>

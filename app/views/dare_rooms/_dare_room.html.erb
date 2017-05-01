@@ -1,6 +1,10 @@
 <%= link_to dare_room_path(dare_room), class: 'list-group-item' do %>
 	<h4 class="list-group-item-heading">
-		<%= dare_room.user.email %>
+		<% if dare_room.user.id == current_user.id %>
+			<%= dare_room.sent_to.email %>
+		<% else %>
+			<%= dare_room.user.email %>
+		<% end %>
 	</h4>
     <p class="list-group-item-text"><%= dare_room.title %></p>
 <% end %>

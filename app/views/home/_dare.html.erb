@@ -1,0 +1,22 @@
+<% @dares.each do |p| %>
+	<div class="container">
+	    <div class="row">
+	        <div class="col-xs-4">
+	         	<%= link_to_micro_image(p.sent_to.avatar, user_path(p.sent_to.id)) %>
+	        </div>
+	        <div class="col-xs-8">
+	        	<%= link_to p.user.email, user_path(p.user.id) %> dared <%= link_to p.sent_to.email, user_path(p.sent_to.id) %> to <%= p.title %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-xs-12 ">
+	        	<%= image_tag(p.proof, class: 'img-posts center-block')   %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-xs-4">like</div>
+	        <div class="col-xs-4">comment</div>
+	        <div class="col-xs-4">share</div>
+	    </div>
+	</div>
+<% end %>
